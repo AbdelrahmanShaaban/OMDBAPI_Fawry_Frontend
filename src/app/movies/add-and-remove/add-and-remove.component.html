@@ -1,0 +1,16 @@
+<div class="add-remove-container" style="margin-bottom: 15px;">
+    <div *ngIf="showAddForm" class="add-form">
+        <h2>Add New Movie</h2>
+        <input type="text" placeholder="Title" [(ngModel)]="newMovie.Title"><br>
+        <input type="text" placeholder="Year" [(ngModel)]="newMovie.Year"><br>
+        <input type="text" placeholder="Type" [(ngModel)]="newMovie.Type"><br>
+        <input type="text" placeholder="Poster URL" [(ngModel)]="newMovie.Poster"><br>
+        <button class="add-button" (click)="addMovie()">Add Movie</button>
+        <button class="remove-button" (click)="toggleAddForm()">Cancel</button>
+    </div>
+    <button class="add-button" *ngIf="!showAddForm" (click)="addMovie()">Add Movie</button>
+     <!-- <button class="remove-button" *ngIf="movie" (click)="removeMovie(movie.Title)">Remove</button>  -->
+</div>
+
+
+<!-- <button (click)="addMovie()">Add</button> -->

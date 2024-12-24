@@ -1,0 +1,17 @@
+/* styles.scss */
+body {
+    background-image: url('/assets/background.jpg'); // Leading slash is crucial
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif; // A more common, readable font stack
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Ensure footer sticks to bottom */
+  }
+  
+  main { /* Style for the main content area */
+      flex: 1; /* Allow main to take up available space */
+      padding: 20px;
+  }

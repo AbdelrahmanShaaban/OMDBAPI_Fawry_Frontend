@@ -1,0 +1,19 @@
+.my-movies-container{
+    padding: 20px;
+    .movie-list{
+        list-style: none;
+        padding: 0;
+    }
+    .movie-item{
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        .movie-poster{
+            width: 100px;
+            margin-right: 10px;
+        }
+    }
+    .rating{
+        margin-top: 10px;
+    }
+}

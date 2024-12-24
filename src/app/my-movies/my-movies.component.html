@@ -1,0 +1,40 @@
+<div class="my-movies-container">
+    <h2>My Movies</h2>
+  
+    <div *ngIf="loading" class="loading-indicator">
+      <div class="spinner"></div> Loading...
+    </div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  
+    <div *ngIf="myMovies && myMovies.length > 0" class="results-container">
+      <ul class="movie-list">
+        <li *ngFor="let movie of myMovies">
+          <div class="movie-item">
+            <img *ngIf="movie.Poster" [src]="movie.Poster" alt="{{ movie.Title }} Poster" class="movie-poster">
+            <div class="movie-details">
+              <h3>{{ movie.Title }}</h3>
+              <p *ngIf="movie.Year">Year: {{ movie.Year }}</p>
+              <p *ngIf="movie.Type">Type: {{ movie.Type }}</p>
+              <div *ngIf="role=='ROLE_ADMIN'" class="admin-actions">
+                <!-- <app-add-and-remove [movie]="movie" (movieRemoved)="getMyMovies()"></app-add-and-remove> -->
+              </div>
+                <div *ngIf="role=='user'"  class="user-actions">
+                    <div class="rating">
+                        Rating : <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+      <div *ngIf="myMovies && myMovies.length===0 && !loading && !error" class="no-result">
+          <h2>No Movies Found</h2>
+      </div>
+  </div>

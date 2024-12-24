@@ -1,0 +1,50 @@
+
+<div class="search-container">
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search for movies..." (keyup.enter)="search()">
+      <button (click)="search()">
+        <i class="fas fa-search"></i> <span class="search-text">Search</span>
+      </button>
+    </div>
+  
+    <div *ngIf="loading" class="loading-indicator">
+      <div class="spinner"></div> Loading...
+    </div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+    <div *ngIf="role=='ROLE_ADMIN'"  style="position: absolute;top:0;display: flex;">
+    <button style="border-radius: 0; margin-left: 20px;margin-right: 20px;" (click)="getMyMovies()">My Movies</button>
+    <button style="border-radius: 0;" (click)="geALLyMovies()">All Movies</button>
+    </div>
+    <div *ngIf="searchResults && searchResults.length > 0" class="results-container">
+   
+        <h2>Search Results ({{ searchResults.length }})</h2>
+        <ul class="movie-list">
+          <li *ngFor="let result of searchResults">
+            <div class="movie-item" (click)="openMovieDetails(result)" style="cursor: pointer;">
+              <img [src]="getPoster(result)" alt="{{ getTitle(result) }} Poster" class="movie-poster">
+              <div class="movie-details">
+                <h3>{{ getTitle(result) }}</h3>
+                <p>Type: {{ getType(result) }}</p>
+                <p>Country: {{ getCountry(result) }}</p>
+                <p>Year: {{ getYear(result) }}</p>
+                <button style="margin-bottom: 10px;" *ngIf="!movieAdded && role=='ROLE_ADMIN' && myflag==false" (click)="onAddMovie(result)">Add Movie</button>
+                <button style="background-color: #851a1a; margin-bottom: 10px;" *ngIf="!movieAdded && role=='ROLE_ADMIN' && myflag==true" (click)="deletMovies(result)">Delete Movie</button>
+                <p *ngIf="movieAdded && addedMovie?.imdbID === result.imdbID" style="color: green;">Added</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="movieAdded">
+          <h2>Added Movie</h2>
+          {{addedMovie?.Title}}
+          <button (click)="resetAddedMovie()">Reset</button>
+      </div>
+    <div *ngIf="searchResults && searchResults.length===0 && !loading && !error" class="no-result">
+      <h2>No Search Results Found</h2>
+    </div>
+  </div>
+
+
+
+

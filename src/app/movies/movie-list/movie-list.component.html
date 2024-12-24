@@ -1,0 +1,9 @@
+<h2>Movie List</h2>
+<div *ngIf="movies.length === 0">Loading movies ...</div>
+<div *ngIf="movies.length > 0">
+  <ul>
+    <li *ngFor="let movie of movies">
+      <a [routerLink]="['/movies', movie.id]">{{ movie.title }}</a>
+    </li>
+  </ul>
+</div>

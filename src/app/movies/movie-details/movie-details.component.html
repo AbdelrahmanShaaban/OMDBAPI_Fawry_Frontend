@@ -1,0 +1,17 @@
+<div class="movie-container" *ngIf="movie">
+    <div class="movie-poster">
+        <img [src]="movie.poster" alt="{{movie.title}} poster">
+    </div>
+    <div class="movie-details">
+        <h2 class="movie-title">{{ movie.title }}</h2>
+        <p class="movie-year">Year: {{ movie.year }}</p>
+        <p class="movie-type">Type: {{ movie.type }}</p>
+        <p class="movie-country">Country: {{ movie.country }}</p>
+        <p class="movie-language">language: {{ movie.language }}</p>
+        <p class="movie-metascore">metascore: {{ movie.metascore }}</p>
+        <p class="movie-imdbVotes">imdbVotes: {{ movie.imdbVotes }}</p>
+        <p class="movie-rated">rated: {{ movie.rated }}</p>
+        <p class="movie-plot">{{ movie.plot }}</p>
+    </div>
+</div>
+<div *ngIf="!movie" class="loading">Loading Movie Details...</div>
